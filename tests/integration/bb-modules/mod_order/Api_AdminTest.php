@@ -42,7 +42,6 @@ class Api_Admin_OrderTest extends BBDbApiTestCase
             array(7),
             array(9),
             //array(12), // solusvm
-            //array(13), // serviceboxbillinglicense
         );
     }
 

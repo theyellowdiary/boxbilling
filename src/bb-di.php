@@ -221,11 +221,6 @@ $di['api_guest'] = function() use ($di) { return $di['api']('guest'); };
 $di['api_client'] = function() use ($di) { return $di['api']('client');};
 $di['api_admin'] = function() use ($di) { return $di['api']('admin'); };
 $di['api_system'] = function() use ($di) { return $di['api']('system'); };
-$di['license'] = function () use ($di) {
-    $service = new Box_License();
-    $service->setDi($di);
-    return $service;
-};
 
 $di['tools'] = function () use ($di){
     $service = new Box_Tools();
@@ -307,11 +302,6 @@ $di['solusvm'] = $di->protect(function ($config) use($di) {
     $solusVM->setDi($di);
     $solusVM->setConfig($config);
     return $solusVM;
-});
-
-$di['service_boxbilling'] = $di->protect(function ($config) use($di) {
-    $service = new \Box\Mod\Serviceboxbillinglicense\ServiceBoxbilling($config);
-    return $service;
 });
 
 $di['ftp'] = $di->protect(function($params) use($di){ return new \Box_Ftp($params); });
