@@ -12,11 +12,6 @@
 
 return array(
 
-    /**
-     * Set BoxBilling license key. Get license key at http://www.boxbilling.com
-     */
-    'license'     => getenv('BB_LICENSE'),
-
     'salt'        => getenv('BB_SALT'),
 
     /**

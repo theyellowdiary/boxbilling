@@ -514,17 +514,11 @@ class Service implements \Box\InjectionAwareInterface
 
     public function getApi()
     {
-        if (!$this->di['license']->isPro()) {
-            throw new \Exception('YouHosting module can only be used by PRO license owners. Get PRO license key at http://www.boxbilling.com/order', 509);
-        }
-
         $config = $this->di['mod_config']('serviceyouhosting');
         require_once 'Youhosting.php';
         $a = array(
-            'api_key'    => $config['api_key'],
-            'boxbilling' => array('license' => $this->di['config']['license']),
+            'api_key'    => $config['api_key']
         );
-
         return new Youhosting_Api($a);
     }
 }

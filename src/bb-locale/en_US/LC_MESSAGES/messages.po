@@ -17,7 +17,6 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: bb-library/Api\n"
 "X-Poedit-SearchPath-1: bb-library/Box\n"
-"X-Poedit-SearchPath-2: bb-library/License\n"
 "X-Poedit-SearchPath-3: bb-library/Model\n"
 "X-Poedit-SearchPath-4: bb-modules\n"
 
@@ -1716,9 +1715,6 @@ msgstr ""
 msgid "You have reached free version limit. Upgrade to PRO version of BoxBilling if you want this limit removed."
 msgstr ""
 
-msgid "BoxBilling license key must be defined in bb-config.php file as BB_LICENSE constant."
-msgstr ""
-
 msgid "PHP curl extension is disabled on your server. Please enable php curl extension."
 msgstr ""
 
@@ -2937,9 +2933,6 @@ msgstr ""
 msgid "Back to Dashboard"
 msgstr ""
 
-msgid "Get BoxBilling license"
-msgstr ""
-
 msgid "Newsletters"
 msgstr ""
 
@@ -3966,12 +3959,6 @@ msgstr ""
 msgid "Execute now"
 msgstr ""
 
-msgid "After purchase you have received an e-mail with license key. Update license key to unlock all features of BoxBilling"
-msgstr ""
-
-msgid "To change license key, change <em>BB_LICENSE</em> value in <em>bb-config.php</em> file"
-msgstr ""
-
 msgid "Licensed to"
 msgstr ""
 
@@ -3988,9 +3975,6 @@ msgid "After payment is received"
 msgstr ""
 
 msgid "Manual activation"
-msgstr ""
-
-msgid "Sell BoxBilling licenses"
 msgstr ""
 
 msgid "1. Configure API"
@@ -5014,9 +4998,6 @@ msgid "Administrator password is missing."
 msgstr ""
 
 msgid "Check your login details"
-msgstr ""
-
-msgid "BoxBilling license order not found"
 msgstr ""
 
 msgid "Order is not activated"

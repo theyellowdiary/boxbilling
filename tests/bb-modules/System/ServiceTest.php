@@ -84,38 +84,6 @@ class ServiceTest extends \BBTestCase {
         $this->assertEquals($expected, $result);
     }
 
-    public function testgetLicenseInfo()
-    {
-        $expires_at = '2012-09-01 00:00';
-        $licensed_to = 'testing Inc.';
-        $config['license'] = 'HOSTING24-e8eqa9a8yqetu9ytynam';
-
-        $expected = array(
-            'licensed_to'   =>  $licensed_to,
-            'key'           =>  $config['license'],
-            'expires_at'    =>  $expires_at,
-        );
-
-        $licenseDetails = array(
-            'expires_at' => $expires_at,
-            'licensed_to' => $licensed_to,
-        );
-
-        $licenseMock = $this->getMockBuilder('\Box_License')->setMethods(array('getDetails'))->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('getDetails')
-            ->will($this->returnValue($licenseDetails));
-
-        $di = new \Box_Di();
-        $di['config'] = $config;
-        $di['license'] = $licenseMock;
-
-        $this->service->setDi($di);
-        $result = $this->service->getLicenseInfo(array());
-        $this->assertInternalType('array', $result);
-        $this->assertEquals($expected, $result);
-    }
-
     public function testgetParams()
     {
         $expected = array(
@@ -429,18 +397,12 @@ class ServiceTest extends \BBTestCase {
 
     public function testcheckLimits_UserIsPro()
     {
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(true);
-
         $dbMock = $this->getMockBuilder('\Box_Database')->getMock();
         $dbMock->expects($this->never())
             ->method('find');
 
 
         $di = new \Box_Di();
-        $di['license'] = $licenseMock;
         $di['db'] = $dbMock;
 
         $this->service->setDi($di);
@@ -460,11 +422,6 @@ class ServiceTest extends \BBTestCase {
         );
         $limit = 5;
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(false);
-
         $dbMock = $this->getMockBuilder('\Box_Database')->getMock();
         $dbMock->expects($this->once())
             ->method('find')
@@ -472,7 +429,6 @@ class ServiceTest extends \BBTestCase {
 
 
         $di = new \Box_Di();
-        $di['license'] = $licenseMock;
         $di['db'] = $dbMock;
 
         $this->service->setDi($di);
@@ -496,11 +452,6 @@ class ServiceTest extends \BBTestCase {
         );
         $limit = 5;
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(false);
-
         $dbMock = $this->getMockBuilder('\Box_Database')->getMock();
         $dbMock->expects($this->once())
             ->method('find')
@@ -508,7 +459,6 @@ class ServiceTest extends \BBTestCase {
 
 
         $di = new \Box_Di();
-        $di['license'] = $licenseMock;
         $di['db'] = $dbMock;
 
         $this->service->setDi($di);
@@ -533,11 +483,6 @@ class ServiceTest extends \BBTestCase {
         );
         $limit = count($findResult);
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(false);
-
         $dbMock = $this->getMockBuilder('\Box_Database')->getMock();
         $dbMock->expects($this->once())
             ->method('find')
@@ -545,7 +490,6 @@ class ServiceTest extends \BBTestCase {
 
 
         $di = new \Box_Di();
-        $di['license'] = $licenseMock;
         $di['db'] = $dbMock;
 
         $this->service->setDi($di);

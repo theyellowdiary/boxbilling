@@ -28,7 +28,6 @@ class Box_DiTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('FileCache', $di['cache']);
         $this->assertInstanceOf('Box_Authorization', $di['auth']);
         $this->assertInstanceOf('Twig_Environment', $di['twig']);
-        $this->assertInstanceOf('Box_License', $di['license']);
         $this->assertInstanceOf('Box_Tools', $di['tools']);
         $this->assertInstanceOf('Box_Validate', $di['validator']);
 

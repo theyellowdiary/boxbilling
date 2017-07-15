@@ -1294,13 +1294,7 @@ class ServiceTest extends \BBTestCase
         $modelProduct = new \Model_Product();
         $modelProduct->loadBean(new \RedBeanPHP\OODBBean());
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(false);
-
         $di            = new \Box_Di();
-        $di['license'] = $licenseMock;
 
         $this->service->setDi($di);
         $this->setExpectedException('\Box_Exception', 'This feature is available in BoxBilling PRO version.', 876);
@@ -1315,18 +1309,12 @@ class ServiceTest extends \BBTestCase
         $modelProduct = new \Model_Product();
         $modelProduct->loadBean(new \RedBeanPHP\OODBBean());
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(true);
-
         $currencyServiceMock = $this->getMockBuilder('\Box\Mod\Currency\Service')->getMock();
         $currencyServiceMock->expects($this->atLeastOnce())
             ->method('getDefault')
             ->willReturn(null);
 
         $di                = new \Box_Di();
-        $di['license']     = $licenseMock;
         $di['mod_service'] = $di->protect(function ($serviceName) use ($currencyServiceMock) {
             if ($serviceName == 'currency') {
                 return $currencyServiceMock;
@@ -1348,11 +1336,6 @@ class ServiceTest extends \BBTestCase
         $modelProduct->loadBean(new \RedBeanPHP\OODBBean());
         $modelProduct->id = 1;
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(true);
-
         $currencyModel = new \Model_Currency();
         $currencyModel->loadBean(new \RedBeanPHP\OODBBean());
 
@@ -1372,7 +1355,6 @@ class ServiceTest extends \BBTestCase
             ->method('fire');
 
         $di                   = new \Box_Di();
-        $di['license']        = $licenseMock;
         $di['mod_service']    = $di->protect(function ($serviceName) use ($currencyServiceMock, $cartServiceMock) {
             if ($serviceName == 'currency') {
                 return $currencyServiceMock;
@@ -1402,11 +1384,6 @@ class ServiceTest extends \BBTestCase
         $modelProduct->id       = 1;
         $modelProduct->is_addon = 1;
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(true);
-
         $currencyModel = new \Model_Currency();
         $currencyModel->loadBean(new \RedBeanPHP\OODBBean());
 
@@ -1426,7 +1403,6 @@ class ServiceTest extends \BBTestCase
             ->method('fire');
 
         $di                   = new \Box_Di();
-        $di['license']        = $licenseMock;
         $di['mod_service']    = $di->protect(function ($serviceName) use ($currencyServiceMock, $cartServiceMock) {
             if ($serviceName == 'currency') {
                 return $currencyServiceMock;
@@ -1455,11 +1431,6 @@ class ServiceTest extends \BBTestCase
         $modelProduct->loadBean(new \RedBeanPHP\OODBBean());
         $modelProduct->id = 1;
 
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(true);
-
         $currencyModel = new \Model_Currency();
         $currencyModel->loadBean(new \RedBeanPHP\OODBBean());
 
@@ -1479,7 +1450,6 @@ class ServiceTest extends \BBTestCase
             ->method('fire');
 
         $di                   = new \Box_Di();
-        $di['license']        = $licenseMock;
         $di['mod_service']    = $di->protect(function ($serviceName) use ($currencyServiceMock, $cartServiceMock) {
             if ($serviceName == 'currency') {
                 return $currencyServiceMock;
@@ -1515,11 +1485,6 @@ class ServiceTest extends \BBTestCase
         $modelProduct->loadBean(new \RedBeanPHP\OODBBean());
         $modelProduct->id   = 1;
         $modelProduct->type = 'custom';
-
-        $licenseMock = $this->getMockBuilder('\Box_License')->getMock();
-        $licenseMock->expects($this->atLeastOnce())
-            ->method('isPro')
-            ->willReturn(true);
 
         $currencyModel = new \Model_Currency();
         $currencyModel->loadBean(new \RedBeanPHP\OODBBean());
@@ -1559,7 +1524,6 @@ class ServiceTest extends \BBTestCase
             ->willReturn('1Y');
 
         $di                   = new \Box_Di();
-        $di['license']        = $licenseMock;
         $di['mod_service']    = $di->protect(function ($serviceName) use ($currencyServiceMock, $cartServiceMock, $productServiceMock) {
             if ($serviceName == 'currency') {
                 return $currencyServiceMock;
